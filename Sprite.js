@@ -48,7 +48,7 @@ class Sprite {
         [0, 1],
       ],
     };
-    this.currentAnimation = "walk-left"; //config.currentAnimation || "idle-down";
+    this.currentAnimation = config.currentAnimation || "idle-down";
     this.currentAnimationFrame = 0;
     this.animationFrameLimit = config.animationFrameLimit || 4;
     this.animationFrameProgress = this.animationFrameLimit;
