@@ -1,21 +1,29 @@
 class OverworldMap {
   constructor(config) {
     this.gameObjects = config.gameObjects;
-    
+    this.cameraPerson = config.cameraPerson;
+
     this.lowerImage = new Image();
     this.lowerImage.src = config.lowerSrc;
 
     this.upperImage = new Image();
     this.upperSrc = config.upperSrc;
-
   }
 
-  drawLowerImage(ctx) {
-    ctx.drawImage(this.lowerImage, 0, 0);
+  drawLowerImage(ctx, cameraPerson) {
+    ctx.drawImage(
+      this.lowerImage,
+      utils.withGrid(10.5) - cameraPerson.x,
+      utils.withGrid(6) - cameraPerson.y
+    );
   }
 
-  drawUpperImage(ctx) {
-    ctx.drawImage(this.upperImage, 0, 0);
+  drawUpperImage(ctx, cameraPerson) {
+    ctx.drawImage(
+      this.upperImage,
+      utils.withGrid(10.5) - cameraPerson.x,
+      utils.withGrid(6) - cameraPerson.y
+    );
   }
 }
 
@@ -32,9 +40,9 @@ window.OverworldMaps = {
       npc1: new Person({
         x: utils.withGrid(7),
         y: utils.withGrid(9),
-        src: "/images/characters/people/npc2.png"
-      })
-    }
+        src: "/images/characters/people/npc2.png",
+      }),
+    },
   },
   Kitchen: {
     lowerSrc: "/images/maps/KitchenLower.png",
@@ -47,14 +55,13 @@ window.OverworldMaps = {
       npcA: new GameObject({
         x: 6,
         y: 8,
-        src: "/images/characters/people/npc2.png"
+        src: "/images/characters/people/npc2.png",
       }),
       npcB: new GameObject({
         x: 8,
         y: 9,
-        src: "/images/characters/people/npc3.png"
+        src: "/images/characters/people/npc3.png",
       }),
-
-    }
-  }
-}
+    },
+  },
+};
