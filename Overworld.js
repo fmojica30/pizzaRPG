@@ -7,14 +7,15 @@ class Overworld {
   }
   init() {
    this.map = new OverworldMap(window.OverworldMaps.DemoRoom);
+   this.directionInput = new DirectionInput();
+   this.directionInput.init();
+   this.directionInput.direction;
    this.startGameLoop();
 
   }
  
   startGameLoop() {
     const step = () => {
-      console.log("Stepping");
-
       this.ctx.clearRect(0,0, this.canvas.width, this.canvas.height);
       //Draw upper layer
       this.map.drawLowerImage(this.ctx);
@@ -22,7 +23,7 @@ class Overworld {
       //Draw game objects
       Object.values(this.map.gameObjects).forEach(object => {
         object.update({
-
+          arrow: this.directionInput.direction
         })
         object.sprite.draw(this.ctx);
       })

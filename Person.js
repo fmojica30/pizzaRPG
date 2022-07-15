@@ -3,6 +3,8 @@ class Person extends GameObject {
     super(config);
     this.movingProgressRemaining = 16;
 
+    this.isPlayerControlled = config.isPlayerControlled || false;
+
     this.directionUpdate = {
       "down": ["y", 1],
       "up": ["y", -1],
@@ -13,6 +15,11 @@ class Person extends GameObject {
 
   update(state) {
     this.updatePosition();
+    if (this.isPlayerControlled && this.movingProgressRemaining === 0 && state.arrow) {
+      //Move in x direction
+      this.direction = state.arrow;
+      this.movingProgressRemaining = 16;
+    }
   }
 
   updatePosition() {
