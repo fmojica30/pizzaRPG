@@ -49,7 +49,7 @@ class OverworldMap {
 
   moveWall(wasX, wasY, direction) {
     this.removeWall(wasX, wasY);
-    const { x, y } = utils.nextPosition1(wasX, wasY, direction);
+    const { x, y } = utils.nextPosition(wasX, wasY, direction);
     this.addWall(x, y);
   }
 }
